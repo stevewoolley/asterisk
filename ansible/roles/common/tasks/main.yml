@@ -1,0 +1,27 @@
+---
+- name: 'Configure system'
+  include: config.yml
+  tags:
+    - bootstrap
+
+- name: 'Update APT package cache'
+  action: apt update_cache=yes
+
+- name: 'Upgrade APT to the latest packages'
+  action: apt upgrade=safe
+
+- name: 'Install common packages'
+  action: apt pkg={{item}} state=installed
+  with_items:
+    - git
+    - screen
+    - weavedconnectd
+    - supervisor
+    - lsb-release
+    - build-essential
+
+- name: 'Fix rsyslog'
+  include: rsyslog.yml
+
+- name: 'Fix ipv6 advertisements'
+  include: dhcpcd.yml
