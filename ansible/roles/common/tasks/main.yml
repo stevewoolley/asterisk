@@ -35,6 +35,8 @@
     - libncurses5-dev
     - sqlite
     - libsqlite0-dev
+    - sqlite3
+    - libsqlite3-dev
     - libjansson-dev
     - uuid
     - uuid-dev
