@@ -12,12 +12,16 @@
   expand_fs:
   when: raspi_config_expanded_filesystem
 
- name: 'set locale'
+- name: 'set locale'
   template: src=locale.j2 dest=/etc/default/locale
   when: ansible_os_family == "Debian"
 
 - name: 'set locale gen'
   template: src=locale.gen.j2 dest=/etc/locale.gen
+  when: ansible_os_family == "Debian"
+
+- name: 'set keyboard'
+  template: src=keyboard.j2 dest=/etc/default/keyboard
   when: ansible_os_family == "Debian"
 
 - name: 'create locale'

@@ -1,7 +1,4 @@
 ---
 - hosts: site
   roles:
-    - common
-    - pjproject
-    - asterisk
     - asterisk_config_simple
